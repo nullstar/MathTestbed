@@ -13,6 +13,9 @@
     <Filter Include="Vendor\implot">
       <UniqueIdentifier>{f8401e7e-079a-4718-86a0-a5a476a09863}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Widgets">
+      <UniqueIdentifier>{6b199a1f-6498-4f74-81be-0f7a39799dda}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -51,6 +54,12 @@
     <ClCompile Include="..\implot-0.13\implot_items.cpp">
       <Filter>Vendor\implot</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Widgets\WindowWidget.cpp">
+      <Filter>Source\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Widgets\SecondOrderDynamicsWidget.cpp">
+      <Filter>Source\Widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\App.h">
@@ -88,6 +97,12 @@
     </ClInclude>
     <ClInclude Include="..\implot-0.13\implot_internal.h">
       <Filter>Vendor\implot</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\WindowWidget.h">
+      <Filter>Source\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\SecondOrderDynamicsWidget.h">
+      <Filter>Source\Widgets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

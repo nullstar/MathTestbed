@@ -1,10 +1,13 @@
 #include "App.h"
+#include "Widgets/SecondOrderDynamicsWidget.h"
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 #include <implot.h>
 #include <backends/imgui_impl_glfw.h>
 #include <backends/imgui_impl_opengl3.h>
 #include <stdio.h>
+#include <typeinfo>
+#include <chrono>
 
 
 
@@ -24,7 +27,7 @@ App::App()
     glfwWindowHint(GLFW_SAMPLES, 4);
 
     // create window
-    m_pWindow = glfwCreateWindow(m_screenWidth, m_screenHeight, GetWindowName(), NULL, NULL);
+    m_pWindow = glfwCreateWindow(m_screenSize.x, m_screenSize.y, GetWindowName(), NULL, NULL);
     if (!m_pWindow)
     {
         glfwTerminate();
@@ -55,6 +58,9 @@ App::App()
 
 App::~App()
 {
+    // release widgets
+    Widgets.clear();
+
     // shutdown imgui
     if (m_IsInitialised)
     {
@@ -112,6 +118,25 @@ void App::Run()
         if (m_showImplotDemoWindow)
             ImPlot::ShowDemoWindow(&m_showImplotDemoWindow);
 
+        // udpate main menu
+        MainMenu();
+
+        // render widgets
+        for(size_t widgetIndex = 0; widgetIndex < Widgets.size(); ++widgetIndex)
+        {
+            const std::unique_ptr<IWindowWidget>& pWidget = Widgets[widgetIndex];
+            if (pWidget->WantsToClose())
+            {
+                std::swap(Widgets[widgetIndex], Widgets.back());
+                Widgets.pop_back();
+                --widgetIndex;
+            }
+            else
+            {
+                pWidget->Render();
+            }
+        }
+
         // render imgui
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -133,7 +158,54 @@ void App::OnWindowResize(GLFWwindow* pWindow, int width, int height)
     App* pApp = static_cast<App*>(glfwGetWindowUserPointer(pWindow));
     if (pApp)
     {
-        pApp->m_screenWidth = width;
-        pApp->m_screenHeight = height;
+        pApp->m_screenSize.x = width;
+        pApp->m_screenSize.y = height;
     }
+}
+
+
+void App::MainMenu()
+{
+	if (ImGui::BeginMainMenuBar())
+	{
+		if (ImGui::BeginMenu("Interpolation"))
+		{
+            if (ImGui::MenuItem("Second Order Dynamics"))
+                CreateUniqueWidget<SecondOrderDynamicsWidget>();
+
+			ImGui::EndMenu();
+		}
+
+		if (ImGui::BeginMenu("Demos"))
+		{
+			if (ImGui::MenuItem("Imgui"))
+				m_showImguiDemoWindow = !m_showImguiDemoWindow;
+
+			if (ImGui::MenuItem("Implot"))
+				m_showImplotDemoWindow = !m_showImplotDemoWindow;
+
+			ImGui::EndMenu();
+		}
+
+		ImGui::EndMainMenuBar();
+	}
+}
+
+
+template<typename widgetType>
+void App::CreateUniqueWidget()
+{
+    // if we already have a widget of this type then give it focus and return
+    const std::type_info& widgetTypeInfo = typeid(widgetType);
+    for (const std::unique_ptr<IWindowWidget>& pWidget : Widgets)
+    {
+        if (typeid(*pWidget) == widgetTypeInfo)
+        {
+            pWidget->Focus();
+            return;
+        }
+    }
+
+    // otherwise create a new widget of the given type
+    Widgets.push_back(std::make_unique<widgetType>());
 }

@@ -10,10 +10,6 @@ int main(int argc, char* argv[])
     if (!pApp)
         return -1;
 
-    // show demo windows
-    pApp->ShowImguiDemoWindow();
-    pApp->ShowImplotDemoWindow();
-
     // run app
     pApp->Run();
 

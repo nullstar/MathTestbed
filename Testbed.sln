@@ -6,9 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "App", "App\App.vcxproj", "{FB5D411E-21DA-46B5-97F1-66FE0A11ED42}"
 	ProjectSection(ProjectDependencies) = postProject
 		{FB2AE024-293D-46C5-BC07-178D060B659B} = {FB2AE024-293D-46C5-BC07-178D060B659B}
+		{456D14CF-1220-48ED-A063-DB297BB234EF} = {456D14CF-1220-48ED-A063-DB297BB234EF}
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GLFW", "GLFW\GLFW.vcxproj", "{FB2AE024-293D-46C5-BC07-178D060B659B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Math", "Math\Math.vcxproj", "{456D14CF-1220-48ED-A063-DB297BB234EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,6 +37,14 @@ Global
 		{FB2AE024-293D-46C5-BC07-178D060B659B}.Release|x64.Build.0 = Release|x64
 		{FB2AE024-293D-46C5-BC07-178D060B659B}.Release|x86.ActiveCfg = Release|Win32
 		{FB2AE024-293D-46C5-BC07-178D060B659B}.Release|x86.Build.0 = Release|Win32
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Debug|x64.ActiveCfg = Debug|x64
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Debug|x64.Build.0 = Debug|x64
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Debug|x86.ActiveCfg = Debug|Win32
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Debug|x86.Build.0 = Debug|Win32
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Release|x64.ActiveCfg = Release|x64
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Release|x64.Build.0 = Release|x64
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Release|x86.ActiveCfg = Release|Win32
+		{456D14CF-1220-48ED-A063-DB297BB234EF}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
