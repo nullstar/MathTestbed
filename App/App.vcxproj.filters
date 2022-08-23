@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{b5c8cd0a-3fad-4d22-9549-6a13788c4133}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor">
+      <UniqueIdentifier>{801c1e57-80d3-402f-a032-a0bbca53f18e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor\imgui">
+      <UniqueIdentifier>{0f7c0dc9-15a1-49d2-96c5-7996b5427fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vendor\implot">
+      <UniqueIdentifier>{f8401e7e-079a-4718-86a0-a5a476a09863}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\App.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\imgui.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\imgui_demo.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\imgui_draw.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\imgui_tables.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\imgui_widgets.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\backends\imgui_impl_glfw.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\imgui-1.88\backends\imgui_impl_opengl3.cpp">
+      <Filter>Vendor\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\implot-0.13\implot.cpp">
+      <Filter>Vendor\implot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\implot-0.13\implot_demo.cpp">
+      <Filter>Vendor\implot</Filter>
+    </ClCompile>
+    <ClCompile Include="..\implot-0.13\implot_items.cpp">
+      <Filter>Vendor\implot</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\App.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\imconfig.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\imgui.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\imgui_internal.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\imstb_rectpack.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\imstb_textedit.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\imstb_truetype.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\backends\imgui_impl_glfw.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\backends\imgui_impl_opengl3.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui-1.88\backends\imgui_impl_opengl3_loader.h">
+      <Filter>Vendor\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\implot-0.13\implot.h">
+      <Filter>Vendor\implot</Filter>
+    </ClInclude>
+    <ClInclude Include="..\implot-0.13\implot_internal.h">
+      <Filter>Vendor\implot</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

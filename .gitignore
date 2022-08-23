@@ -1,0 +1,11 @@
+# output and intermediate directories
+App/Bin/
+App/Intermediate/
+GLFW/Bin/
+GLFW/Intermediate/
+
+# Visual Studio cache
+.vs/
+
+# imgui ini file
+App/imgui.ini
