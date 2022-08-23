@@ -3,6 +3,8 @@ App/Bin/
 App/Intermediate/
 GLFW/Bin/
 GLFW/Intermediate/
+Math/Bin/
+Math/Intermediate/
 
 # Visual Studio cache
 .vs/
