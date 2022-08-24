@@ -18,7 +18,9 @@ private:
 	std::vector<float> m_targetData;
 	std::vector<float> m_valueData;
 
+	bool m_useFrequency = false;
 	float m_smoothTime = 1.0f;
+	float m_frequency = 1.0f;
 
 	bool m_isDirty = true;
 };
