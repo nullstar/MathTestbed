@@ -172,6 +172,7 @@
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Widgets\SecondOrderDynamicsWidget.cpp" />
+    <ClCompile Include="Source\Widgets\SmoothValueWidget.cpp" />
     <ClCompile Include="Source\Widgets\WindowWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -188,6 +189,7 @@
     <ClInclude Include="..\implot-0.13\implot_internal.h" />
     <ClInclude Include="Source\App.h" />
     <ClInclude Include="Source\Widgets\SecondOrderDynamicsWidget.h" />
+    <ClInclude Include="Source\Widgets\SmoothValueWidget.h" />
     <ClInclude Include="Source\Widgets\WindowWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

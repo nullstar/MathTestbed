@@ -61,9 +61,9 @@ public:
 	}
 
 private:
-	T m_prevTarget{};		// previous target
-	T m_value{};			// current value
-	T m_valueSpeed{};		// current value speed
+	T m_prevTarget = T{};	// previous target
+	T m_value = T{};		// current value
+	T m_valueSpeed = T{};	// current value speed
 	float m_k1 = 0.0f;		// dynamics constant 1
 	float m_k2 = 0.0f;		// dynamics constant 2
 	float m_k3 = 0.0f;		// dynamics constant 3

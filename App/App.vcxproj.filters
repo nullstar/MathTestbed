@@ -60,6 +60,9 @@
     <ClCompile Include="Source\Widgets\SecondOrderDynamicsWidget.cpp">
       <Filter>Source\Widgets</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Widgets\SmoothValueWidget.cpp">
+      <Filter>Source\Widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\App.h">
@@ -102,6 +105,9 @@
       <Filter>Source\Widgets</Filter>
     </ClInclude>
     <ClInclude Include="Source\Widgets\SecondOrderDynamicsWidget.h">
+      <Filter>Source\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\SmoothValueWidget.h">
       <Filter>Source\Widgets</Filter>
     </ClInclude>
   </ItemGroup>

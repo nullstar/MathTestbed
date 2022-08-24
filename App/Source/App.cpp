@@ -1,5 +1,6 @@
 #include "App.h"
 #include "Widgets/SecondOrderDynamicsWidget.h"
+#include "Widgets/SmoothValueWidget.h"
 #include <GLFW/glfw3.h>
 #include <imgui.h>
 #include <implot.h>
@@ -172,6 +173,9 @@ void App::MainMenu()
 		{
             if (ImGui::MenuItem("Second Order Dynamics"))
                 CreateUniqueWidget<SecondOrderDynamicsWidget>();
+
+            if (ImGui::MenuItem("Smooth Value"))
+                CreateUniqueWidget<SmoothValueWidget>();
 
 			ImGui::EndMenu();
 		}
