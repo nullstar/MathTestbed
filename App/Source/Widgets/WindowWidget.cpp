@@ -3,7 +3,8 @@
 
 
 
-IWindowWidget::IWindowWidget()
+IWindowWidget::IWindowWidget(std::weak_ptr<MessageBus> pMessageBus)
+    : m_pMessageBus(pMessageBus)
 {
 }
 
@@ -52,4 +53,15 @@ void IWindowWidget::Close()
 bool IWindowWidget::WantsToClose() const
 {
     return !m_isOpen;
+}
+
+
+bool IWindowWidget::SendMessage(const MessageType& message) const
+{
+    if (std::shared_ptr<MessageBus> pBus = m_pMessageBus.lock())
+    {
+        pBus->AddMessage(message);
+        return true;
+    }
+    return false;
 }

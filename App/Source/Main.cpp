@@ -1,19 +1,23 @@
 #include "App.h"
+#include "MessageBus.h"
 #include <memory>
 
 
 
 int main(int argc, char* argv[])
 {
+    // create message bus
+    std::shared_ptr<MessageBus> pMessageBus = std::make_shared<MessageBus>();
+
 	// create app
-    std::unique_ptr<App> pApp = std::make_unique<App>();
-    if (!pApp)
-        return -1;
+    std::shared_ptr<App> pApp = std::make_shared<App>(pMessageBus);
+    pMessageBus->AddReceiver(pApp);
 
     // run app
     pApp->Run();
 
     // shutdown
     pApp.reset();
+    pMessageBus.reset();
     return 0;
 }

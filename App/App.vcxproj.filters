@@ -16,6 +16,9 @@
     <Filter Include="Source\Widgets">
       <UniqueIdentifier>{6b199a1f-6498-4f74-81be-0f7a39799dda}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vendor\imgui_markdown">
+      <UniqueIdentifier>{03aa10cb-73eb-41f1-9788-598a5cec6d0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -60,8 +63,14 @@
     <ClCompile Include="Source\Widgets\SecondOrderDynamicsWidget.cpp">
       <Filter>Source\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Widgets\SmoothValueWidget.cpp">
+    <ClCompile Include="Source\Widgets\ExponentialDecayWidget.cpp">
       <Filter>Source\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Widgets\EncyclopediaWidget.cpp">
+      <Filter>Source\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MessageBus.cpp">
+      <Filter>Source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,8 +116,17 @@
     <ClInclude Include="Source\Widgets\SecondOrderDynamicsWidget.h">
       <Filter>Source\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Widgets\SmoothValueWidget.h">
+    <ClInclude Include="Source\Widgets\ExponentialDecayWidget.h">
       <Filter>Source\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\EncyclopediaWidget.h">
+      <Filter>Source\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\imgui_markdown\imgui_markdown.h">
+      <Filter>Vendor\imgui_markdown</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MessageBus.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

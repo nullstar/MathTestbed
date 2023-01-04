@@ -151,12 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ExponentialDecay.h" />
     <ClInclude Include="Source\SecondOrderDynamics.h" />
-    <ClInclude Include="Source\SmoothValue.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\SecondOrderDynamics.cpp" />
-    <ClCompile Include="Source\SmoothValue.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

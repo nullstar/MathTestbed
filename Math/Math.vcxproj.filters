@@ -9,16 +9,8 @@
     <ClInclude Include="Source\SecondOrderDynamics.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SmoothValue.h">
+    <ClInclude Include="Source\ExponentialDecay.h">
       <Filter>Source</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="Source\SecondOrderDynamics.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\SmoothValue.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 
 
 
+#include "MessageBus.h"
 #include <glm/glm.hpp>
 #include <vector>
 #include <memory>
@@ -13,10 +14,10 @@ class IWindowWidget;
 
 
 
-class App
+class App : public IMessageReceiver
 {
 public:
-	App();
+	App(std::weak_ptr<MessageBus> pMessageBus);
 	~App();
 
 	const char* GetWindowName() const;
@@ -26,6 +27,9 @@ public:
 	void ShowImplotDemoWindow() { m_showImplotDemoWindow = true; }
 
 private:
+	void SendMessage(const MessageType& message) const;
+	virtual void OnMessage(const MessageType& message) override;
+
 	static void GLFWErrorCallback(int error, const char* description);
 	static void OnWindowResize(GLFWwindow* pWindow, int width, int height);
 	void MainMenu();
@@ -40,5 +44,6 @@ private:
 	bool m_showImguiDemoWindow = false;
 	bool m_showImplotDemoWindow = false;
 
-	std::vector<std::unique_ptr<IWindowWidget>> Widgets;
+	std::weak_ptr<MessageBus> m_pMessageBus;
+	std::vector<std::shared_ptr<IWindowWidget>> m_widgets;
 };

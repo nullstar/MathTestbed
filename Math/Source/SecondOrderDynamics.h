@@ -3,6 +3,7 @@
 
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
+#include <functional>
 
 
 
@@ -18,10 +19,10 @@ public:
 	SecondOrderDynamics(float frequency, float damping, float initialResponse, const T& startValue)
 	{
 		SetDynamicsConstants(frequency, damping, initialResponse);
-		SetValue(startValue);
+		SetValue(startValue, 0.0f);
 	}
 
-	const T& Update(const T& target, float deltaTime)
+	const T& Update(const T& target, float deltaTime, std::function<void(T&)> clampVelocity = [](T&) {})
 	{
 		// estimate target speed
 		const T targetSpeed = (target - m_prevTarget) / deltaTime;
@@ -32,9 +33,10 @@ public:
 		const float stableK2 = glm::max<float>(m_k2, glm::max<float>(deltaTime * deltaTime * 0.5f + k1dt * 0.5f, k1dt));
 
 		// update values using semi-implicit euler method
-		m_value += deltaTime * m_valueSpeed;
 		const T valueAcceleration = (target + m_k3 * targetSpeed - m_value - m_k1 * m_valueSpeed) / stableK2; 
 		m_valueSpeed += deltaTime * valueAcceleration;
+		clampVelocity(m_valueSpeed);
+		m_value += deltaTime * m_valueSpeed;
 		return m_value; 
 	}
 
@@ -43,11 +45,16 @@ public:
 		return m_value;
 	}
 
-	void SetValue(const T& inValue)
+	const T& GetValueSpeed() const
+	{
+		return m_valueSpeed;
+	}
+
+	void SetValue(const T& inValue, const T& inValueSpeed)
 	{
 		m_prevTarget = inValue;
 		m_value = inValue;
-		m_valueSpeed = T{};
+		m_valueSpeed = inValueSpeed;
 	}
 
 	void SetDynamicsConstants(float frequency, float damping, float initialResponse)
