@@ -30,7 +30,7 @@ private:
 
 	virtual void OnMessage(const MessageType& message) override;
 	virtual const char* GetWindowName() const override;
-	virtual void RenderContents() override;
+	virtual void RenderContents(float deltaTime) override;
 	
 	static void LinkCallback(ImGui::MarkdownLinkCallbackData callbackData);
 	static ImGui::MarkdownImageData ImageCallback(ImGui::MarkdownLinkCallbackData callbackData);

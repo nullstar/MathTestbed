@@ -103,7 +103,7 @@ const char* EncyclopediaWidget::GetWindowName() const
 }
 
 
-void EncyclopediaWidget::RenderContents()
+void EncyclopediaWidget::RenderContents(float deltaTime)
 {
     // track which page we wish to display
     const EncyclopediaFile* pNextSelectedFile = m_pSelectedFile;

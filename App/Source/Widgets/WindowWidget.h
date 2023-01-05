@@ -11,7 +11,7 @@ public:
 	IWindowWidget(std::weak_ptr<MessageBus> pMessageBus);
 	virtual ~IWindowWidget();
 
-	void Render();
+	void Render(float deltaTime);
 	void Focus();
 	void Close();
 	bool WantsToClose() const;
@@ -20,7 +20,7 @@ public:
 
 private:
 	virtual const char* GetWindowName() const = 0;
-	virtual void RenderContents() = 0;
+	virtual void RenderContents(float deltaTime) = 0;
 
 	std::weak_ptr<MessageBus> m_pMessageBus;
 	bool m_wantsFocus = true;

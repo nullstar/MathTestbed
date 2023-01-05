@@ -102,8 +102,14 @@ void App::Run()
         return;
 
     // execute run loop
+    double prevTime = glfwGetTime();
     while (!glfwWindowShouldClose(m_pWindow))
     {
+        // caclulate delta time
+        const double currentTime = glfwGetTime();
+        const float deltaTime = static_cast<float>(currentTime - prevTime);
+        prevTime = currentTime;
+
         // update message bus
         if (std::shared_ptr<MessageBus> pMessageBus = m_pMessageBus.lock())
             pMessageBus->BroadcastMessages();
@@ -147,7 +153,7 @@ void App::Run()
             }
             else
             {
-                pWidget->Render();
+                pWidget->Render(deltaTime);
             }
         }
 

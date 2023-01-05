@@ -1,11 +1,18 @@
 #include "SecondOrderDynamicsWidget.h"
-#include "SecondOrderDynamics.h"
 #include "EncyclopediaWidget.h"
 #include <implot.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/color_space.hpp>
 
 
+
+
+SecondOrderDynamicsWidget::SecondOrderDynamicsWidget(std::weak_ptr<MessageBus> pMessageBus) 
+	: IWindowWidget(pMessageBus) 
+{
+	if (!m_isRealtime)
+		GenerateStaticData();
+}
 
 
 void SecondOrderDynamicsWidget::OnMessage(const MessageType& message)
@@ -19,7 +26,7 @@ const char* SecondOrderDynamicsWidget::GetWindowName() const
 }
 
 
-void SecondOrderDynamicsWidget::RenderContents()
+void SecondOrderDynamicsWidget::RenderContents(float deltaTime)
 {
 	// show help
 	if (ImGui::Button("[DOCS]"))
@@ -57,40 +64,74 @@ void SecondOrderDynamicsWidget::RenderContents()
 	}
 
 	// create controls
-	m_isDirty |= ImGui::SliderFloat("Frequency", &m_frequency, 0.0f, 10.0f);
-	m_isDirty |= ImGui::SliderFloat("Damping", &m_damping, 0.0f, 10.0f);
-	m_isDirty |= ImGui::SliderFloat("Initial Response", &m_initialResponse, -10.0f, 10.0f);
+	bool isDirty = false;
 
-	ImGui::Spacing();
+	if (ImGui::Checkbox("Realtime", &m_isRealtime))
+	{
+		isDirty = true;
+		if (m_isRealtime)
+		{
+			ResetData();
+			TakeRealtimeSample(0.0f);
+		}
+	}
+
+	isDirty |= ImGui::SliderFloat("Target", &m_target, -10.0f, 10.0f);
+	isDirty |= ImGui::SliderFloat("Duration", &m_duration, 0.1f, 30.0f);
+	isDirty |= ImGui::SliderFloat("FPS", &m_fps, 1.0f, 120.0f);
+
+	ImGui::Separator();
+
+	isDirty |= ImGui::SliderFloat("Frequency", &m_frequency, 0.0f, 10.0f);
+	isDirty |= ImGui::SliderFloat("Damping", &m_damping, 0.0f, 10.0f);
+	isDirty |= ImGui::SliderFloat("Initial Response", &m_initialResponse, -10.0f, 10.0f);
+
+	ImGui::Separator();
+
 	ImGui::Checkbox("Render Speed", &m_renderSpeed);
-	m_isDirty |= ImGui::Checkbox("Clamp Speed", &m_clampSpeed);
+	isDirty |= ImGui::Checkbox("Clamp Speed", &m_clampSpeed);
 	if (m_clampSpeed)
-		m_isDirty |= ImGui::SliderFloat("Max Speed", &m_maxSpeed, 0.0f, 10.0f);
+		isDirty |= ImGui::SliderFloat("Max Speed", &m_maxSpeed, 0.0f, 10.0f);		
 
-	ImGui::Spacing();
-	m_isDirty |= ImGui::SliderFloat("FPS", &m_fps, 1.0f, 120.0f);
-	m_isDirty |= ImGui::SliderFloat("Duration", &m_duration, 0.1f, 10.0f);	
+	// update samples
+	if (m_isRealtime)
+	{
+		UpdateRealtimeData(deltaTime);
 
-	// regenerate samples if dirty
-	if (m_isDirty)
-		GenerateSamples();
+		if (m_currentTime > m_duration)
+			ResetData();
+	}
+	else if (isDirty)
+	{
+		GenerateStaticData();
+	}
 }
 
 
-void SecondOrderDynamicsWidget::GenerateSamples()
+void SecondOrderDynamicsWidget::ResetData()
 {
+	// reset timers
+	m_prevSampleTime = 0.0f;
+	m_currentTime = 0.0f;
+
 	// initialise second order dynamics
-	SecondOrderDynamics<float> dynamics(m_frequency, m_damping, m_initialResponse, 0.0f);
+	m_dynamics = SecondOrderDynamics<float>(m_frequency, m_damping, m_initialResponse, 0.0f);
 
-	// generate samples
-	const float deltaTime = 1.0f / m_fps;
-	const glm::u32 numSamples = 1 + static_cast<glm::u32>(ceilf(m_duration / deltaTime));
-	constexpr float target = 1.0f;
-
+	// clear samples
 	m_timeData.clear();
 	m_targetData.clear();
 	m_valueData.clear();
 	m_valueSpeedData.clear();
+}
+
+
+void SecondOrderDynamicsWidget::GenerateStaticData()
+{
+	ResetData();
+
+	// generate samples
+	const float deltaTime = 1.0f / m_fps;
+	const glm::u32 numSamples = 1 + static_cast<glm::u32>(ceilf(m_duration / deltaTime));
 
 	m_timeData.reserve(numSamples);
 	m_targetData.reserve(numSamples);
@@ -106,13 +147,40 @@ void SecondOrderDynamicsWidget::GenerateSamples()
 	for (glm::u32 i = 0; i < numSamples; ++i)
 	{
 		m_timeData.push_back(i * deltaTime);
-		m_targetData.push_back(target);
-		m_valueData.push_back(dynamics.GetValue());
-		m_valueSpeedData.push_back(dynamics.GetValueSpeed());
+		m_targetData.push_back(m_target);
+		m_valueData.push_back(m_dynamics.GetValue());
+		m_valueSpeedData.push_back(m_dynamics.GetValueSpeed());
 
-		dynamics.Update(target, deltaTime, clampSpeed);
+		m_dynamics.Update(m_target, deltaTime, clampSpeed);
 	}
+}
 
-	// reset dirty flag
-	m_isDirty = false;
+
+void SecondOrderDynamicsWidget::TakeRealtimeSample(float time)
+{
+	m_timeData.push_back(time);
+	m_targetData.push_back(m_target);
+	m_valueData.push_back(m_dynamics.GetValue());
+	m_valueSpeedData.push_back(m_dynamics.GetValueSpeed());
+}
+
+
+void SecondOrderDynamicsWidget::UpdateRealtimeData(float deltaTime)
+{
+	m_dynamics.SetDynamicsConstants(m_frequency, m_damping, m_initialResponse);
+
+	const auto clampSpeed = [this](float& speed) -> void
+	{
+		if (m_clampSpeed)
+			speed = glm::clamp<float>(speed, -m_maxSpeed, m_maxSpeed);
+	};
+
+	m_currentTime += deltaTime;
+	const float sampleDuration = 1.0f / m_fps;
+	while (m_currentTime - m_prevSampleTime >= sampleDuration)
+	{
+		m_prevSampleTime += sampleDuration;
+		m_dynamics.Update(m_target, sampleDuration, clampSpeed);
+		TakeRealtimeSample(m_prevSampleTime);
+	}
 }

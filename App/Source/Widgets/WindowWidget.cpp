@@ -14,7 +14,7 @@ IWindowWidget::~IWindowWidget()
 }
 
 
-void IWindowWidget::Render()
+void IWindowWidget::Render(float deltaTime)
 {
 	// update focus
     if (m_wantsFocus)
@@ -32,7 +32,7 @@ void IWindowWidget::Render()
     }
 
     // render contents
-    RenderContents();
+    RenderContents(deltaTime);
 
     ImGui::End();
 }
