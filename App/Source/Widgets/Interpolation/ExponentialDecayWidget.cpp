@@ -1,5 +1,5 @@
-#include "ExponentialDecayWidget.h"
-#include "EncyclopediaWidget.h"
+#include "Widgets/Interpolation/ExponentialDecayWidget.h"
+#include "Widgets/EncyclopediaWidget.h"
 #include <implot.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/color_space.hpp>

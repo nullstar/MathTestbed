@@ -1,4 +1,4 @@
-#include "EncyclopediaWidget.h"
+#include "Widgets/EncyclopediaWidget.h"
 #include <fstream>
 #include <iostream>  
 #include <sstream>  

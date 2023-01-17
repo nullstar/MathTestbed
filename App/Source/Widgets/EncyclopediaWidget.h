@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include "WindowWidget.h"
+#include "Widgets/WindowWidget.h"
 #include <imgui.h>
 #include <imgui_markdown.h>
 #include <filesystem>

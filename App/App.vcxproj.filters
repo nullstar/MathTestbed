@@ -22,6 +22,18 @@
     <Filter Include="Math">
       <UniqueIdentifier>{4004c7ab-3c8a-451f-b620-f99e000f0ea2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math\Interpolation">
+      <UniqueIdentifier>{819abfdd-4c91-4132-9388-a8f2a93afdd5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Widgets\Interpolation">
+      <UniqueIdentifier>{43808c98-a21c-4e8a-ac52-4b0e30aebd81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math\Solvers">
+      <UniqueIdentifier>{c66094d2-ad8e-4f39-bc14-2a61edb85574}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Widgets\Solvers">
+      <UniqueIdentifier>{464327ae-5b82-498e-943f-e0a58024f1b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -63,17 +75,20 @@
     <ClCompile Include="Source\Widgets\WindowWidget.cpp">
       <Filter>Source\Widgets</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Widgets\SecondOrderDynamicsWidget.cpp">
-      <Filter>Source\Widgets</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Widgets\ExponentialDecayWidget.cpp">
-      <Filter>Source\Widgets</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Widgets\EncyclopediaWidget.cpp">
       <Filter>Source\Widgets</Filter>
     </ClCompile>
     <ClCompile Include="Source\MessageBus.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Widgets\Interpolation\ExponentialDecayWidget.cpp">
+      <Filter>Source\Widgets\Interpolation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Widgets\Interpolation\SecondOrderDynamicsWidget.cpp">
+      <Filter>Source\Widgets\Interpolation</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Widgets\Solvers\ODEWidget.cpp">
+      <Filter>Source\Widgets\Solvers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,12 +131,6 @@
     <ClInclude Include="Source\Widgets\WindowWidget.h">
       <Filter>Source\Widgets</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Widgets\SecondOrderDynamicsWidget.h">
-      <Filter>Source\Widgets</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Widgets\ExponentialDecayWidget.h">
-      <Filter>Source\Widgets</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Widgets\EncyclopediaWidget.h">
       <Filter>Source\Widgets</Filter>
     </ClInclude>
@@ -131,11 +140,26 @@
     <ClInclude Include="Source\MessageBus.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\Math\ExponentialDecay.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="..\Math\Interpolation\ExponentialDecay.h">
+      <Filter>Math\Interpolation</Filter>
     </ClInclude>
-    <ClInclude Include="..\Math\SecondOrderDynamics.h">
-      <Filter>Math</Filter>
+    <ClInclude Include="..\Math\Interpolation\SecondOrderDynamics.h">
+      <Filter>Math\Interpolation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\Interpolation\ExponentialDecayWidget.h">
+      <Filter>Source\Widgets\Interpolation</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\Interpolation\SecondOrderDynamicsWidget.h">
+      <Filter>Source\Widgets\Interpolation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\Solvers\ODE.h">
+      <Filter>Math\Solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\Solvers\ODEWidget.h">
+      <Filter>Source\Widgets\Solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\Solvers\NewtonRaphson.h">
+      <Filter>Math\Solvers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

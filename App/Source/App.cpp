@@ -1,7 +1,8 @@
 #include "App.h"
-#include "Widgets/ExponentialDecayWidget.h"
 #include "Widgets/EncyclopediaWidget.h"
-#include "Widgets/SecondOrderDynamicsWidget.h"
+#include "Widgets/Interpolation/ExponentialDecayWidget.h"
+#include "Widgets/Interpolation/SecondOrderDynamicsWidget.h"
+#include "Widgets/Solvers/ODEWidget.h"
 #include <chrono>
 #include <imgui.h>
 #include <implot.h>
@@ -207,6 +208,10 @@ void App::OnMessage(const MessageType& message)
         {
             CreateUniqueWidget<SecondOrderDynamicsWidget>();
         }
+        else if (windowType == "OrdinaryDifferentialEquations")
+        {
+            CreateUniqueWidget<ODEWidget>();
+        }
     }
 }
 
@@ -244,6 +249,14 @@ void App::MainMenu()
 
                 if (ImGui::MenuItem("Exponential Decay"))
                     SendMessage("OpenWindow ExponentialDecay");
+
+                ImGui::EndMenu();
+            }
+
+            if (ImGui::BeginMenu("Differential Equations"))
+            {
+                if (ImGui::MenuItem("Ordinary Differential Equations"))
+                    SendMessage("OpenWindow OrdinaryDifferentialEquations");
 
                 ImGui::EndMenu();
             }

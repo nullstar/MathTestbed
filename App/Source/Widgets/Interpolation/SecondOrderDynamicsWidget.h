@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "SecondOrderDynamics.h"
-#include "WindowWidget.h"
+#include "Interpolation/SecondOrderDynamics.h"
+#include "Widgets/WindowWidget.h"
 #include <imgui.h>
 #include <vector>
 

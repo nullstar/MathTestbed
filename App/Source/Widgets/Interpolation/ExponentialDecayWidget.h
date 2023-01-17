@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "WindowWidget.h"
-#include "ExponentialDecay.h"
+#include "Widgets/WindowWidget.h"
+#include "Interpolation/ExponentialDecay.h"
 #include <imgui.h>
 #include <vector>
 

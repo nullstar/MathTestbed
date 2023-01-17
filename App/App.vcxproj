@@ -96,7 +96,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;$(SolutionDir)App\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -114,7 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;$(SolutionDir)App\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -132,7 +132,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;$(SolutionDir)App\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -150,7 +150,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)GLFW\include;$(SolutionDir)imgui-1.88;$(SolutionDir)implot-0.13;$(SolutionDir)imgui_markdown;$(SolutionDir)glm-0.9.9.8\glm;$(SolutionDir)Math;$(SolutionDir)App\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -176,9 +176,10 @@
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\MessageBus.cpp" />
-    <ClCompile Include="Source\Widgets\ExponentialDecayWidget.cpp" />
     <ClCompile Include="Source\Widgets\EncyclopediaWidget.cpp" />
-    <ClCompile Include="Source\Widgets\SecondOrderDynamicsWidget.cpp" />
+    <ClCompile Include="Source\Widgets\Interpolation\ExponentialDecayWidget.cpp" />
+    <ClCompile Include="Source\Widgets\Interpolation\SecondOrderDynamicsWidget.cpp" />
+    <ClCompile Include="Source\Widgets\Solvers\ODEWidget.cpp" />
     <ClCompile Include="Source\Widgets\WindowWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -194,13 +195,16 @@
     <ClInclude Include="..\imgui_markdown\imgui_markdown.h" />
     <ClInclude Include="..\implot-0.13\implot.h" />
     <ClInclude Include="..\implot-0.13\implot_internal.h" />
-    <ClInclude Include="..\Math\ExponentialDecay.h" />
-    <ClInclude Include="..\Math\SecondOrderDynamics.h" />
+    <ClInclude Include="..\Math\Interpolation\ExponentialDecay.h" />
+    <ClInclude Include="..\Math\Interpolation\SecondOrderDynamics.h" />
+    <ClInclude Include="..\Math\Solvers\NewtonRaphson.h" />
+    <ClInclude Include="..\Math\Solvers\ODE.h" />
     <ClInclude Include="Source\App.h" />
     <ClInclude Include="Source\MessageBus.h" />
-    <ClInclude Include="Source\Widgets\ExponentialDecayWidget.h" />
     <ClInclude Include="Source\Widgets\EncyclopediaWidget.h" />
-    <ClInclude Include="Source\Widgets\SecondOrderDynamicsWidget.h" />
+    <ClInclude Include="Source\Widgets\Interpolation\ExponentialDecayWidget.h" />
+    <ClInclude Include="Source\Widgets\Interpolation\SecondOrderDynamicsWidget.h" />
+    <ClInclude Include="Source\Widgets\Solvers\ODEWidget.h" />
     <ClInclude Include="Source\Widgets\WindowWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -1,5 +1,5 @@
-#include "SecondOrderDynamicsWidget.h"
-#include "EncyclopediaWidget.h"
+#include "Widgets/Interpolation/SecondOrderDynamicsWidget.h"
+#include "Widgets/EncyclopediaWidget.h"
 #include <implot.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/color_space.hpp>
