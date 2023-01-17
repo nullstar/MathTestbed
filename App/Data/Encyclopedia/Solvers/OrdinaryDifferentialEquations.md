@@ -50,7 +50,7 @@ Semi-impicit methods allow us to blend together the cheapness and simplicity of 
 vNext = v + dt * ApplyForce() / m
 xNext = x + dt * vNext
 
-As with the other method types, higher order versions of semi-implicit methods exist for improved accuracy and stability at the cost of performance.  I've provided implementations for Velocity Verlet which is a second order method, and Ruth4 which is a fourth order method.
+As with the other method types, higher order versions of semi-implicit methods exist for improved accuracy and stability at the cost of performance.  I've provided implementations for Velocity Verlet which is a second order method, and Ruth4 which is a fourth order method.  Note that Velocity Verlet and Ruth4 are special cases for 2nd order differential equations.  To date I'm not aware of higher order semi-implicit methods that can be applied generically for any order of equation.  The majority of problems you encounter in game development will be 2nd order equations however since you are aften applying forces to entites whilst tracking their velocity and position.  If you have a problem for which the equations aren't 2nd order then stick to semi-implicit euler or use a higher order explicit method if needed.
 
 Semi-implicit methods have singificantly better behaviour for really no more processing cost relative to fully explicit methods.  I therefore recommend using these for most cases.
 
