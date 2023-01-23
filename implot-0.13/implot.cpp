@@ -3680,7 +3680,10 @@ bool DragPoint(int n_id, double* x, double* y, const ImVec4& col, float radius, 
     bool hovered = false, held = false;
 
     if (input)
-        ImGui::ButtonBehavior(rect,id,&hovered,&held);
+    {
+        ImGui::KeepAliveID(id);
+        ImGui::ButtonBehavior(rect, id, &hovered, &held);
+    }
 
     bool dragging = false;
     if (held && ImGui::IsMouseDragging(0)) {

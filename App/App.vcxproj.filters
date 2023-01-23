@@ -34,6 +34,9 @@
     <Filter Include="Source\Widgets\Solvers">
       <UniqueIdentifier>{464327ae-5b82-498e-943f-e0a58024f1b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Math\Splines">
+      <UniqueIdentifier>{9165441e-fc35-4a1e-9849-778e5d8579e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Main.cpp">
@@ -89,6 +92,15 @@
     </ClCompile>
     <ClCompile Include="Source\Widgets\Solvers\ODEWidget.cpp">
       <Filter>Source\Widgets\Solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Widgets\Solvers\RootFindingWidget.cpp">
+      <Filter>Source\Widgets\Solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Math\Solvers\RootFinding.cpp">
+      <Filter>Math\Solvers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Math\Splines\CubicHermite.cpp">
+      <Filter>Math\Splines</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -158,8 +170,14 @@
     <ClInclude Include="Source\Widgets\Solvers\ODEWidget.h">
       <Filter>Source\Widgets\Solvers</Filter>
     </ClInclude>
-    <ClInclude Include="..\Math\Solvers\NewtonRaphson.h">
+    <ClInclude Include="..\Math\Solvers\RootFinding.h">
       <Filter>Math\Solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Widgets\Solvers\RootFindingWidget.h">
+      <Filter>Source\Widgets\Solvers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\Splines\CubicHermite.h">
+      <Filter>Math\Splines</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

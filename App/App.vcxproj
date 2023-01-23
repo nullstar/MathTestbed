@@ -173,6 +173,8 @@
     <ClCompile Include="..\implot-0.13\implot.cpp" />
     <ClCompile Include="..\implot-0.13\implot_demo.cpp" />
     <ClCompile Include="..\implot-0.13\implot_items.cpp" />
+    <ClCompile Include="..\Math\Solvers\RootFinding.cpp" />
+    <ClCompile Include="..\Math\Splines\CubicHermite.cpp" />
     <ClCompile Include="Source\App.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\MessageBus.cpp" />
@@ -180,6 +182,7 @@
     <ClCompile Include="Source\Widgets\Interpolation\ExponentialDecayWidget.cpp" />
     <ClCompile Include="Source\Widgets\Interpolation\SecondOrderDynamicsWidget.cpp" />
     <ClCompile Include="Source\Widgets\Solvers\ODEWidget.cpp" />
+    <ClCompile Include="Source\Widgets\Solvers\RootFindingWidget.cpp" />
     <ClCompile Include="Source\Widgets\WindowWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -197,14 +200,16 @@
     <ClInclude Include="..\implot-0.13\implot_internal.h" />
     <ClInclude Include="..\Math\Interpolation\ExponentialDecay.h" />
     <ClInclude Include="..\Math\Interpolation\SecondOrderDynamics.h" />
-    <ClInclude Include="..\Math\Solvers\NewtonRaphson.h" />
+    <ClInclude Include="..\Math\Solvers\RootFinding.h" />
     <ClInclude Include="..\Math\Solvers\ODE.h" />
+    <ClInclude Include="..\Math\Splines\CubicHermite.h" />
     <ClInclude Include="Source\App.h" />
     <ClInclude Include="Source\MessageBus.h" />
     <ClInclude Include="Source\Widgets\EncyclopediaWidget.h" />
     <ClInclude Include="Source\Widgets\Interpolation\ExponentialDecayWidget.h" />
     <ClInclude Include="Source\Widgets\Interpolation\SecondOrderDynamicsWidget.h" />
     <ClInclude Include="Source\Widgets\Solvers\ODEWidget.h" />
+    <ClInclude Include="Source\Widgets\Solvers\RootFindingWidget.h" />
     <ClInclude Include="Source\Widgets\WindowWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -3,6 +3,7 @@
 #include "Widgets/Interpolation/ExponentialDecayWidget.h"
 #include "Widgets/Interpolation/SecondOrderDynamicsWidget.h"
 #include "Widgets/Solvers/ODEWidget.h"
+#include "Widgets/Solvers/RootFindingWidget.h"
 #include <chrono>
 #include <imgui.h>
 #include <implot.h>
@@ -212,6 +213,10 @@ void App::OnMessage(const MessageType& message)
         {
             CreateUniqueWidget<ODEWidget>();
         }
+        else if (windowType == "RootFinding")
+        {
+            CreateUniqueWidget<RootFindingWidget>();
+        }
     }
 }
 
@@ -253,10 +258,13 @@ void App::MainMenu()
                 ImGui::EndMenu();
             }
 
-            if (ImGui::BeginMenu("Differential Equations"))
+            if (ImGui::BeginMenu("Solvers"))
             {
                 if (ImGui::MenuItem("Ordinary Differential Equations"))
                     SendMessage("OpenWindow OrdinaryDifferentialEquations");
+
+                if (ImGui::MenuItem("Root Finding"))
+                    SendMessage("OpenWindow RootFinding");
 
                 ImGui::EndMenu();
             }
@@ -265,7 +273,7 @@ void App::MainMenu()
         }
 
 #if SHOW_IMGUI_DEMOS
-		if (ImGui::BeginMenu("Imgui Demos"))
+		if (ImGui::BeginMenu("Imgui"))
 		{
 			if (ImGui::MenuItem("Imgui"))
 				m_showImguiDemoWindow = !m_showImguiDemoWindow;
